@@ -1,14 +1,16 @@
 import Image from "next/image";
 import { client } from "../utils/graphql/client";
 import { gql } from "@apollo/client";
+import { ProfileBanner } from "../components/blocks/profileBanner/profileBanner";
 
 export default function Home({ pageData, featured, experiences }: { pageData: unknown; featured?: unknown; experienceSectionTitle?: string; experiences?: unknown; }) {
 
   return (
     <div className="home-page-container">
       <main>
+        {/* <pre>{JSON.stringify(pageData, null, 2)}</pre> */}
 
-        <pre>{JSON.stringify(pageData, null, 2)}</pre>
+        <ProfileBanner />
       </main>
     </div>
   );

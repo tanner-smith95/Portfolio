@@ -1,0 +1,39 @@
+@import "../../../styles/variables.scss";
+
+.profile-banner {
+    padding: $vert-xl $vert-md $vert-lg $vert-md;
+
+    .header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+
+        .headshot-wrapper {
+            border-radius: 100%;
+            overflow: hidden;
+            width: 7.5rem;
+            height: 7.5rem;
+            border: 4px solid $accent-color;
+            margin-bottom: $vert-md;
+        }
+
+        .name {
+            margin-bottom: $vert-sm;
+        }
+
+        .role,
+        .tagline {
+            font-size: 1.25rem;
+            line-height: 1.75rem;
+        }
+
+        .role {
+            margin-bottom: $vert-xs;
+        }
+
+        .tagline {
+            margin-bottom: $vert-xl;
+        }
+    }
+}
