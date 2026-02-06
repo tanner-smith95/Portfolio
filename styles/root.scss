@@ -5,7 +5,14 @@ body {
   background-color: variables.$background-primary;
   color: variables.$text-primary;
 
-  font-family: ui-sans-serif, system-ui, sans-serif;
+  // Used to style the background of the Storybook canvas area
+  .docs-story {
+    background-color: variables.$background-secondary;
+  }
+
+  font-family: ui-sans-serif,
+  system-ui,
+  sans-serif;
 
   h1 {
     font-size: 3rem;
