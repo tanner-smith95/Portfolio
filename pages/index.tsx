@@ -1,16 +1,16 @@
-import Image from "next/image";
 import { client } from "../utils/graphql/client";
 import { gql } from "@apollo/client";
-import { ProfileBanner } from "../components/blocks/profileBanner/profileBanner";
+import { ProfileBanner, ProfileBannerProps } from "../components/blocks/profileBanner/profileBanner";
+import profileBannerConnector from "@/components/blocks/profileBanner/profileBannerConnector";
 
-export default function Home({ pageData, featured, experiences }: { pageData: unknown; featured?: unknown; experienceSectionTitle?: string; experiences?: unknown; }) {
+export default function Home({ pageData, featured, experiences }: { pageData: unknown; featured?: ProfileBannerProps; experienceSectionTitle?: string; experiences?: unknown; }) {
 
   return (
     <div className="home-page-container">
       <main>
-        {/* <pre>{JSON.stringify(pageData, null, 2)}</pre> */}
+        {/* <pre>{JSON.stringify(pageData.featured, null, 2)}</pre> */}
 
-        <ProfileBanner />
+        {featured && (<ProfileBanner {...featured} />)}
       </main>
     </div>
   );
@@ -39,6 +39,7 @@ export async function getStaticProps() {
                 lastName
                 phoneNumber
                 linkedInProfile
+                tagline
               }
               experienceSectionTitle
               experienceCollection {
@@ -106,7 +107,7 @@ export async function getStaticProps() {
   return {
     props: {
       pageData: pageData,
-      featured: pageData?.featured,
+      featured: pageData?.featured ? profileBannerConnector(pageData.featured) : undefined,
       experienceSectionTitle: pageData?.experienceSectionTitle,
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       experiences: (experiences as any)?.data?.projectCollection?.items || [],

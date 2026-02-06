@@ -1,22 +1,32 @@
 import styles from "./profile-banner.module.scss";
 
-export const ProfileBanner = () => {
+export type ProfileBannerProps = {
+    headshotUrl?: string;
+    firstName?: string;
+    lastName?: string;
+    role?: string;
+    tagline?: string;
+    description?: string;
+}
+
+export const ProfileBanner = ({ headshotUrl, firstName, lastName, role, tagline, description }: ProfileBannerProps) => {
+    const fullName = `${firstName || ""} ${lastName || ""}`.trim();
     return (
         <div className={`${styles["profile-banner"]} container-narrow`}>
             <div className={styles.header}>
-                <div className={styles["headshot-wrapper"]}>
-                    <img src="https://images.ctfassets.net/5oswxgxbfxy6/7zJFLUXqQHJiZVJnVr7wLK/d420fa05a20427c360335fe3e1b0be28/tanner-medium.png" alt="Tanner Smith" />
-                </div>
+                {headshotUrl && (<div className={styles["headshot-wrapper"]}>
+                    <img src={headshotUrl} alt={fullName} />
+                </div>)}
 
-                <h1 className={styles.name}>Tanner Smith</h1>
+                {(firstName || lastName) && <h1 className={styles.name}>{fullName}</h1>}
 
-                <p className={styles.role}>
-                    Full-Stack Developer & UX Enthusiast
-                </p>
+                {role && (<p className={styles.role}>
+                    {role}
+                </p>)}
 
-                <p className={styles.tagline}>
-                    Building exceptional digital experiences that users love
-                </p>
+                {tagline && (<p className={styles.tagline}>
+                    {tagline}
+                </p>)}
             </div>
 
             <div className={styles.description}>
