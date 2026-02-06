@@ -5,8 +5,6 @@ import ProfileBanner from './profileBanner';
 const meta = {
     title: 'Components/Blocks/ProfileBanner',
     component: ProfileBanner,
-    parameters: {
-    },
     tags: ['autodocs'],
 } satisfies Meta<typeof ProfileBanner>;
 
