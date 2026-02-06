@@ -1,7 +1,7 @@
-@import "../../../styles/variables.scss";
+@use "../../../styles/variables.scss";
 
 .profile-banner {
-    padding: $vert-xl $vert-md $vert-lg $vert-md;
+    padding: variables.$vert-xl variables.$vert-md variables.$vert-lg variables.$vert-md;
 
     .header {
         display: flex;
@@ -14,12 +14,12 @@
             overflow: hidden;
             width: 7.5rem;
             height: 7.5rem;
-            border: 4px solid $accent-color;
-            margin-bottom: $vert-md;
+            border: 4px solid variables.$accent-color;
+            margin-bottom: variables.$vert-md;
         }
 
         .name {
-            margin-bottom: $vert-sm;
+            margin-bottom: variables.$vert-sm;
         }
 
         .role,
@@ -29,11 +29,11 @@
         }
 
         .role {
-            margin-bottom: $vert-xs;
+            margin-bottom: variables.$vert-xs;
         }
 
         .tagline {
-            margin-bottom: $vert-mdlg;
+            margin-bottom: variables.$vert-mdlg;
         }
     }
 }

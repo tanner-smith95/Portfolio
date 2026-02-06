@@ -1,10 +1,9 @@
-@import "tailwindcss";
-@import "variables";
-@import "margins";
+@use "variables";
+@use "margins";
 
 body {
-  background-color: $background-primary;
-  color: $text-primary;
+  background-color: variables.$background-primary;
+  color: variables.$text-primary;
 
   font-family: ui-sans-serif, system-ui, sans-serif;
 
@@ -16,17 +15,17 @@ body {
   p {
     font-size: 1rem;
     line-height: 1.5;
-    color: $text-secondary;
+    color: variables.$text-secondary;
   }
 
   p,
   ol,
   ul,
   pre {
-    color: $text-secondary;
+    color: variables.$text-secondary;
 
     &:not(:last-child) {
-      margin-bottom: $vert-sm;
+      margin-bottom: variables.$vert-sm;
     }
   }
 }
