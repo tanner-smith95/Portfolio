@@ -1,0 +1,23 @@
+@import "tailwindcss";
+@import "colors";
+
+body {
+  background-color: $background-primary;
+  color: $text-primary;
+
+  p,
+  ol,
+  ul,
+  pre {
+    color: $text-secondary;
+  }
+}
+
+.gql-sandbox {
+  position: relative;
+  height: 100vh;
+
+  &>div {
+    height: 100vh;
+  }
+}
