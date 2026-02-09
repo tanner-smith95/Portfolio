@@ -1,0 +1,21 @@
+@use "../../../styles/variables.scss";
+
+.pills-list-component {
+    &:not(:last-child) {
+        margin-bottom: variables.$vert-md;
+    }
+
+    .pills-list-heading {
+        color: variables.$text-secondary;
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+        margin-bottom: variables.$vert-xs;
+        font-weight: 100;
+    }
+
+    .pills-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+}
