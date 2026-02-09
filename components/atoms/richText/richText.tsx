@@ -4,4 +4,4 @@ export const RichText = ({ content }: { content: string }) => {
     );
 };
 
-export default RichText;        
+export default RichText;

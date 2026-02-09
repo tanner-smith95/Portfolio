@@ -1,0 +1,18 @@
+@use "../../../styles/variables.scss";
+
+.button-component {
+    background-color: transparent;
+    color: variables.$accent-color;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    padding: variables.$vert-xs variables.$vert-md;
+    border: 1px solid variables.$accent-color;
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: variables.$transition;
+
+    &:hover {
+        background-color: variables.$accent-color;
+        color: variables.$text-primary;
+    }
+}
