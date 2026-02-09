@@ -1,0 +1,11 @@
+@use "../../../styles/variables.scss";
+
+.pill-component {
+    display: inline-block;
+    background-color: variables.$accent-color;
+    color: variables.$text-primary;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 2rem;
+}
