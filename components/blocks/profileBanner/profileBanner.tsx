@@ -1,5 +1,6 @@
 import RichText from "@/components/atoms/richText/richText";
 import styles from "./profile-banner.module.scss";
+import LazyImage from "@/components/atoms/lazyImage/lazyImage";
 
 export type ProfileBannerProps = {
     headshotUrl?: string;
@@ -16,7 +17,7 @@ export const ProfileBanner = ({ headshotUrl, firstName, lastName, role, tagline,
         <div className={`${styles["profile-banner"]} container-narrow`}>
             <div className={styles.header}>
                 {headshotUrl && (<div className={styles["headshot-wrapper"]}>
-                    <img src={headshotUrl} alt={fullName} />
+                    <LazyImage src={headshotUrl} alt={fullName} />
                 </div>)}
 
                 {(firstName || lastName) && <h1 className={styles.name}>{fullName}</h1>}
