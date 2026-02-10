@@ -1,0 +1,22 @@
+@use "../../../styles/variables.scss";
+
+.rich-text {
+
+    p,
+    ol,
+    ul,
+    pre {
+        &:not(:last-child) {
+            margin-bottom: variables.$vert-sm;
+        }
+    }
+
+    ol,
+    ul {
+        li {
+            &:not(:last-child) {
+                margin-bottom: variables.$vert-xs;
+            }
+        }
+    }
+}
