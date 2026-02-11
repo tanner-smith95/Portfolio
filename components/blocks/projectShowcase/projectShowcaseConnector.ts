@@ -1,5 +1,6 @@
 import richTextConnector from "@/components/atoms/richText/richTextConnector";
 import { ProjectShowcaseProps } from "./projectShowcase";
+import { getMicroCopy } from "@/utils/microsopy/microcopy";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function projectShowcaseConnector(data: any): ProjectShowcaseProps {
@@ -17,8 +18,7 @@ export function projectShowcaseConnector(data: any): ProjectShowcaseProps {
         title: data?.projectName,
         tools: tools,
         description: data?.projectDescription?.json ? (richTextConnector(data.projectDescription.json)) : undefined,
-        // TO-DO: SET UP GLOBAL COPY CONFIG FILE
-        learnMoreText: "Learn more",
+        learnMoreText: getMicroCopy("learnMore"),
     };
 }
 
