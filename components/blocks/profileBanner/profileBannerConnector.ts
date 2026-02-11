@@ -1,10 +1,8 @@
+import richTextConnector from "@/components/atoms/richText/richTextConnector";
+import { ProfileBannerProps } from "./profileBanner";
 
 // A function to parse raw Contentful profile data to be used by the profile banner component
-
-import richTextConnector from "@/components/atoms/richText/richTextConnector";
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function profileBannerConnector(data: any) {
+export function profileBannerConnector(data: any): ProfileBannerProps {
 
 
     return {
@@ -13,7 +11,7 @@ export function profileBannerConnector(data: any) {
         lastName: data?.lastName || null,
         role: data?.jobTitle || null,
         tagline: data?.tagline || null,
-        description: data?.about?.json ? (richTextConnector(data.about.json)) : null,
+        description: data?.about?.json ? (richTextConnector(data.about.json)) : undefined,
     };
 }
 
