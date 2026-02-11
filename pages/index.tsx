@@ -26,7 +26,7 @@ export default function Home({ pageData, featured, experiences }: { pageData: an
             <div className={styles["experiences-list"]}>
               {experiences?.map((experience, index) => {
                 return (<Fragment key={`project-overview-${index}`}>
-                  <ProjectShowcase {...experience} />
+                  <ProjectShowcase {...experience} invertLayout={index % 2 === 1} />
                 </Fragment>)
               })}
             </div>

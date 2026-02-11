@@ -12,9 +12,18 @@ export type ProjectShowcaseProps = {
     tools?: string[];
     description?: string;
     learnMoreText?: string;
+    invertLayout?: boolean;
 };
 
-export const ProjectShowcase = ({ imageURL, imageAlt, title, tools, description, learnMoreText = "Learn more" }: ProjectShowcaseProps) => {
+export const ProjectShowcase = ({
+    imageURL,
+    imageAlt,
+    title,
+    tools,
+    description,
+    learnMoreText = "Learn more",
+    invertLayout = false
+}: ProjectShowcaseProps) => {
     const truncatedRef = useRef<HTMLDivElement>(null);
 
     // Function to toggle truncated class based on content height
@@ -41,7 +50,7 @@ export const ProjectShowcase = ({ imageURL, imageAlt, title, tools, description,
     }
 
     return (
-        <div className={`${styles["project-showcase-component"]} container-wide`}>
+        <div className={`${styles["project-showcase-component"]} container-wide ${invertLayout ? styles.inverted : ""}`}>
             <div className={styles.inner}>
                 {imageURL && (<div className={styles["image-container"]}>
                     <LazyImage

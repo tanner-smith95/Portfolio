@@ -4,6 +4,12 @@
     position: relative;
     width: 100%;
 
+    &.inverted {
+        .inner {
+            flex-direction: row-reverse;
+        }
+    }
+
     .inner {
         width: 100%;
         display: flex;
