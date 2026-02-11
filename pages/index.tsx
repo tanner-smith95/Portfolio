@@ -23,11 +23,13 @@ export default function Home({ pageData, featured, experiences }: { pageData: an
               <h2 className={styles["experience-header"]}>{pageData.experienceSectionTitle}</h2>
             )}
 
-            {experiences?.map((experience, index) => {
-              return (<Fragment key={`project-overview-${index}`}>
-                <ProjectShowcase {...experience} />
-              </Fragment>)
-            })}
+            <div className={styles["experiences-list"]}>
+              {experiences?.map((experience, index) => {
+                return (<Fragment key={`project-overview-${index}`}>
+                  <ProjectShowcase {...experience} />
+                </Fragment>)
+              })}
+            </div>
 
           </div>
         )}

@@ -8,5 +8,11 @@
             margin-bottom: 3rem;
             text-align: center;
         }
+
+        .experiences-list {
+            display: flex;
+            flex-direction: column;
+            gap: variables.$vert-lg;
+        }
     }
 }
