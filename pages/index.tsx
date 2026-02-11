@@ -2,15 +2,35 @@ import { client } from "../utils/graphql/client";
 import { gql } from "@apollo/client";
 import { ProfileBanner, ProfileBannerProps } from "../components/blocks/profileBanner/profileBanner";
 import profileBannerConnector from "@/components/blocks/profileBanner/profileBannerConnector";
+import styles from "./home.module.scss";
+import ProjectShowcase, { ProjectShowcaseProps } from "@/components/blocks/projectShowcase/projectShowcase";
+import projectShowcaseConnector from "@/components/blocks/projectShowcase/projectShowcaseConnector";
+import { Fragment } from "react/jsx-runtime";
 
-export default function Home({ pageData, featured, experiences }: { pageData: unknown; featured?: ProfileBannerProps; experienceSectionTitle?: string; experiences?: unknown; }) {
+export default function Home({ pageData, featured, experiences }: { pageData: any; featured?: ProfileBannerProps; experienceSectionTitle?: string; experiences?: ProjectShowcaseProps[]; }) {
 
   return (
-    <div className="home-page-container">
-      <main>
+    <div className={styles["home-page-container"]}>
+      <main className="content-gutter">
         {/* <pre>{JSON.stringify(pageData.featured, null, 2)}</pre> */}
+        {/* <pre>{JSON.stringify(experiences, null, 2)}</pre> */}
 
         {featured && (<ProfileBanner {...featured} />)}
+
+        {experiences?.length && (
+          <div className={`${styles["experience-section"]} container-wide`}>
+            {pageData?.experienceSectionTitle && (
+              <h2 className={styles["experience-header"]}>{pageData.experienceSectionTitle}</h2>
+            )}
+
+            {experiences?.map((experience, index) => {
+              return (<Fragment key={`project-overview-${index}`}>
+                <ProjectShowcase {...experience} />
+              </Fragment>)
+            })}
+
+          </div>
+        )}
       </main>
     </div>
   );
@@ -83,6 +103,7 @@ export async function getStaticProps() {
               featuredImage {
                 url
                 title
+                description
               }
               projectDescription {
                 json
@@ -101,6 +122,12 @@ export async function getStaticProps() {
     })
     .then((result) => { return result });
 
+  // Parse the raw experiences data
+  const parsedExperiences = [];
+  for (const experience of (experiences as any)?.data?.projectCollection?.items || []) {
+    parsedExperiences.push(projectShowcaseConnector(experience));
+  }
+
 
   // By returning { props: { posts } }, the Blog component
   // will receive `posts` as a prop at build time
@@ -110,7 +137,7 @@ export async function getStaticProps() {
       featured: pageData?.featured ? profileBannerConnector(pageData.featured) : undefined,
       experienceSectionTitle: pageData?.experienceSectionTitle,
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      experiences: (experiences as any)?.data?.projectCollection?.items || [],
+      experiences: parsedExperiences,
     },
   }
 }

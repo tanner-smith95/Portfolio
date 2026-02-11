@@ -1,0 +1,12 @@
+@use "../styles/variables.scss";
+
+.home-page-container {
+    .experience-section {
+        margin-bottom: variables.$vert-lg;
+
+        .experience-header {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+    }
+}

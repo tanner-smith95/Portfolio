@@ -1,7 +1,7 @@
 @use "../../../styles/variables.scss";
 
 .profile-banner {
-    padding: variables.$vert-xl variables.$vert-md variables.$vert-lg variables.$vert-md;
+    padding: variables.$vert-xl 0 variables.$vert-lg 0;
 
     .header {
         display: flex;
