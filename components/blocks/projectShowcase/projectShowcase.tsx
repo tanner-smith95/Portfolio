@@ -34,9 +34,11 @@ export const ProjectShowcase = ({ imageURL, imageAlt, title, tools, description,
     }, [truncatedRef.current]);
 
     // Update truncated section styles on window resize
-    window.addEventListener("resize", () => {
-        updateTruncation();
-    });
+    if (typeof window !== "undefined") {
+        window.addEventListener("resize", () => {
+            updateTruncation();
+        });
+    }
 
     return (
         <div className={`${styles["project-showcase-component"]} container-wide`}>
