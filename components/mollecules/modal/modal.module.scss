@@ -1,0 +1,31 @@
+@use "../../../styles/variables.scss";
+
+.modal-component {
+    display: none;
+    position: absolute;
+    inset: 0;
+    overflow-y: auto;
+    background-color: variables.$background-secondary;
+
+    &.open {
+        display: block;
+    }
+
+    .modal-header {
+        max-width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        height: 4rem;
+        padding: 0 1.5rem;
+
+        .modal-close-button {
+            background-color: unset;
+            color: variables.$text-primary;
+            border: unset;
+            font-size: 1rem;
+            line-height: 1rem;
+            cursor: pointer;
+        }
+    }
+}
