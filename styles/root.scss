@@ -10,6 +10,10 @@ body {
     background-color: variables.$background-secondary;
   }
 
+  &.disable-scroll {
+    overflow: hidden;
+  }
+
   font-family: ui-sans-serif,
   system-ui,
   sans-serif;

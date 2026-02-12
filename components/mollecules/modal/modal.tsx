@@ -23,6 +23,20 @@ export const Modal = ({ children, closeButtonAreaLabel = "Close modal", triggerE
         }
     }, [triggerElements])
 
+    // Disable page level scroll while the modal is open
+    useEffect(() => {
+        if (open) {
+            document?.body?.classList?.add("disable-scroll");
+
+            // Set the modal scroll to the top whenever it's opened
+            if (modalRef?.current) {
+                modalRef.current.scrollTop = 0
+            }
+        } else {
+            document?.body?.classList?.remove("disable-scroll");
+        }
+    }, [open])
+
     return (
         <div className={`${styles["modal-component"]} ${open ? styles.open : ""}`} data-open={`${open}`} ref={modalRef}>
             <div className={styles["modal-header"]}>
