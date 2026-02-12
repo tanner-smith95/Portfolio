@@ -4,6 +4,7 @@ import PillsList from "@/components/mollecules/pillsList/pillsList";
 import RichText from "@/components/atoms/richText/richText";
 import Button from "@/components/atoms/button/button";
 import { useEffect, useRef } from "react";
+import Modal from "@/components/mollecules/modal/modal";
 
 export type ProjectShowcaseProps = {
     imageURL?: string;
@@ -49,6 +50,10 @@ export const ProjectShowcase = ({
         });
     }
 
+    // Ref for the learn more modal trigger button
+    const triggerRef = useRef<HTMLButtonElement>(null);
+    const closeRef = useRef<HTMLButtonElement>(null);
+
     return (
         <div className={`${styles["project-showcase-component"]} container-wide ${invertLayout ? styles.inverted : ""}`}>
             <div className={styles.inner}>
@@ -60,6 +65,7 @@ export const ProjectShowcase = ({
                 </div>)}
 
                 <div className={styles["project-overview"]}>
+                    {/* Project Overview truncated description */}
                     <div className={styles.truncate} ref={truncatedRef}>
                         {title && (<h3>{title}</h3>)}
 
@@ -75,10 +81,41 @@ export const ProjectShowcase = ({
 
                     <Button
                         ariaLabel="Learn more"
-                        onClick={() => { }}
+                        ref={triggerRef}
                         text={learnMoreText}
                     />
                 </div>
+
+                {/* Learn More Modal */}
+                <Modal triggerElements={[triggerRef, closeRef]}>
+                    <div className={`${styles["modal-content"]} container-wide content-gutter`}>
+                        {imageURL && (<div className={styles["modal-image-container"]}>
+                            <LazyImage
+                                src={imageURL}
+                                alt={imageAlt}
+                            />
+                        </div>)}
+
+
+                        {title && (<h3>{title}</h3>)}
+
+                        {tools && (<PillsList
+                            heading="Tools & Languages"
+                            pills={tools}
+                        />)}
+
+                        {description && (<RichText
+                            content={description}
+                        />)}
+
+                        <Button
+                            className={styles["modal-content-close-button"]}
+                            ariaLabel="Close"
+                            ref={closeRef}
+                            text={"Close"}
+                        />
+                    </div>
+                </Modal>
             </div>
         </div>
     );

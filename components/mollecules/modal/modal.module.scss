@@ -2,10 +2,11 @@
 
 .modal-component {
     display: none;
-    position: absolute;
+    position: fixed;
     inset: 0;
     overflow-y: auto;
     background-color: variables.$background-secondary;
+    z-index: 10;
 
     &.open {
         display: block;

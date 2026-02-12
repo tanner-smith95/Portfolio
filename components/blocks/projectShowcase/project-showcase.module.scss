@@ -61,6 +61,22 @@
                 }
             }
         }
+
+        .modal-content {
+            .modal-image-container {
+                position: relative;
+                width: 100%;
+                max-width: 256px;
+                aspect-ratio: 1/1;
+                overflow: hidden;
+                border-radius: 100%;
+                margin: 0 auto variables.$vert-mdlg auto;
+            }
+
+            .modal-content-close-button {
+                margin: 3rem 0;
+            }
+        }
     }
 
 }
