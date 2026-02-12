@@ -23,18 +23,50 @@ const LinkedInIcon = () => (
 
 )
 
-export const Footer = () => {
+export type FooterProps = {
+    header?: string;
+    phoneNumber?: string;
+    emailAddress?: string;
+    linkedInURL?: string;
+}
+
+export const Footer = ({
+    header,
+    phoneNumber,
+    emailAddress,
+    linkedInURL,
+}: FooterProps) => {
     return (
         <div className={styles["footer-component"]}>
             <div className={`${styles["inner"]} container-wide content-gutter`}>
-                <h2 className={styles["contact-heading"]}>Contact Me</h2>
+                {header && <h2 className={styles["contact-heading"]}>{header}</h2>}
 
                 <div className={styles["contacts"]}>
-                    <a href="tel:+14237074934" className={styles["contact"]}><PhoneIcon /> +1 (423) 707-4934</a>
+                    {phoneNumber && (<a
+                        href={`tel:${phoneNumber}`}
+                        aria-label={`Call ${phoneNumber}`}
+                        className={styles["contact"]}>
+                        <PhoneIcon />
+                        {phoneNumber}
+                    </a>)}
 
-                    <a href="mailto:tanner@example.com" className={styles["contact"]}><EmailIcon /> tanner@example.com</a>
+                    {emailAddress && (<a
+                        href={`mailto:${emailAddress}`}
+                        aria-label={`Email ${emailAddress}`}
+                        className={styles["contact"]}>
+                        <EmailIcon />
+                        {emailAddress}
+                    </a>)}
 
-                    <a href="https://www.linkedin.com/in/tanner-smith-344992190/" target="_blank" rel="noopener noreferrer" className={styles["contact"]}><LinkedInIcon /> My LinkedeIn profile</a>
+                    {linkedInURL && (<a
+                        href={linkedInURL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Visit my LinkedIn profile"
+                        className={styles["contact"]}>
+                        <LinkedInIcon />
+                        Visit my LinkedIn profile
+                    </a>)}
                 </div>
             </div>
         </div>

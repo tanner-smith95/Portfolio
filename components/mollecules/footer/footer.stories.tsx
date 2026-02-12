@@ -13,5 +13,9 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
     args: {
+        header: "Contact Me",
+        phoneNumber: "+1 (423) 707-4934",
+        emailAddress: "tanner@example.com",
+        linkedInURL: "https://www.linkedin.com/in/tanner-smith-344992190/",
     },
 };
