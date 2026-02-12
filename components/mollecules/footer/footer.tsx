@@ -1,3 +1,4 @@
+import { getMicroCopy } from "@/utils/microsopy/microcopy";
 import styles from "./footer.module.scss";
 
 const PhoneIcon = () => (
@@ -44,7 +45,7 @@ export const Footer = ({
                 <div className={styles["contacts"]}>
                     {phoneNumber && (<a
                         href={`tel:${phoneNumber}`}
-                        aria-label={`Call ${phoneNumber}`}
+                        aria-label={`${getMicroCopy("call")} ${phoneNumber}`}
                         className={styles["contact"]}>
                         <PhoneIcon />
                         {phoneNumber}
@@ -52,7 +53,7 @@ export const Footer = ({
 
                     {emailAddress && (<a
                         href={`mailto:${emailAddress}`}
-                        aria-label={`Email ${emailAddress}`}
+                        aria-label={`${getMicroCopy("email")} ${emailAddress}`}
                         className={styles["contact"]}>
                         <EmailIcon />
                         {emailAddress}
@@ -62,10 +63,10 @@ export const Footer = ({
                         href={linkedInURL}
                         target="_blank"
                         rel="noopener noreferrer"
-                        aria-label="Visit my LinkedIn profile"
+                        aria-label={getMicroCopy("visitLinkedIn")}
                         className={styles["contact"]}>
                         <LinkedInIcon />
-                        Visit my LinkedIn profile
+                        {getMicroCopy("visitLinkedIn")}
                     </a>)}
                 </div>
             </div>

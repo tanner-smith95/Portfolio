@@ -5,6 +5,7 @@ import RichText from "@/components/atoms/richText/richText";
 import Button from "@/components/atoms/button/button";
 import { useEffect, useRef } from "react";
 import Modal from "@/components/mollecules/modal/modal";
+import { getMicroCopy } from "@/utils/microsopy/microcopy";
 
 export type ProjectShowcaseProps = {
     imageURL?: string;
@@ -110,9 +111,9 @@ export const ProjectShowcase = ({
 
                         <Button
                             className={styles["modal-content-close-button"]}
-                            ariaLabel="Close"
+                            ariaLabel={getMicroCopy("close")}
                             ref={closeRef}
-                            text={"Close"}
+                            text={getMicroCopy("close")}
                         />
                     </div>
                 </Modal>

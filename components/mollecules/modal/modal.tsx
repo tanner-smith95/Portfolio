@@ -1,3 +1,4 @@
+import { getMicroCopy } from "@/utils/microsopy/microcopy";
 import styles from "./modal.module.scss";
 import { ReactNode, RefObject, useEffect, useRef, useState } from "react";
 
@@ -7,7 +8,7 @@ export type ModalProps = {
     triggerElements: RefObject<HTMLElement | null>[]
 };
 
-export const Modal = ({ children, closeButtonAreaLabel = "Close modal", triggerElements }: ModalProps) => {
+export const Modal = ({ children, closeButtonAreaLabel = getMicroCopy("closeModal"), triggerElements }: ModalProps) => {
 
     const [open, setOpen] = useState(false)
     const modalRef = useRef<HTMLDivElement>(null);
