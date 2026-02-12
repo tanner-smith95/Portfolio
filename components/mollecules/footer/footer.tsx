@@ -38,7 +38,7 @@ export const Footer = ({
     linkedInURL,
 }: FooterProps) => {
     return (
-        <div className={styles["footer-component"]}>
+        <footer className={styles["footer-component"]}>
             <div className={`${styles["inner"]} container-wide content-gutter`}>
                 {header && <h2 className={styles["contact-heading"]}>{header}</h2>}
 
@@ -70,7 +70,7 @@ export const Footer = ({
                     </a>)}
                 </div>
             </div>
-        </div>
+        </footer>
     );
 }
 

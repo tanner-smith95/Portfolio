@@ -6,35 +6,49 @@ import styles from "./home.module.scss";
 import ProjectShowcase, { ProjectShowcaseProps } from "@/components/blocks/projectShowcase/projectShowcase";
 import projectShowcaseConnector from "@/components/blocks/projectShowcase/projectShowcaseConnector";
 import { Fragment } from "react/jsx-runtime";
+import Footer, { FooterProps } from "@/components/mollecules/footer/footer";
+import footerConnector from "@/components/mollecules/footer/footerConnector";
 
-export default function Home({ pageData, featured, experiences }: { pageData: any; featured?: ProfileBannerProps; experienceSectionTitle?: string; experiences?: ProjectShowcaseProps[]; }) {
+export type HomePageProps = {
+  pageData: any;
+  featured?: ProfileBannerProps;
+  experienceSectionTitle?: string;
+  experiences?: ProjectShowcaseProps[];
+  footerData?: FooterProps
+}
+
+export default function Home({ pageData, featured, experiences, footerData }: HomePageProps) {
 
   return (
-    <div className={styles["home-page-container"]}>
-      <main className="content-gutter">
-        {/* <pre>{JSON.stringify(pageData.featured, null, 2)}</pre> */}
-        {/* <pre>{JSON.stringify(experiences, null, 2)}</pre> */}
+    <>
+      <div className={styles["home-page-container"]}>
+        <main className="content-gutter">
+          {/* <pre>{JSON.stringify(pageData.featured, null, 2)}</pre> */}
+          {/* <pre>{JSON.stringify(experiences, null, 2)}</pre> */}
 
-        {featured && (<ProfileBanner {...featured} />)}
+          {featured && (<ProfileBanner {...featured} />)}
 
-        {experiences?.length && (
-          <div className={`${styles["experience-section"]} container-wide`}>
-            {pageData?.experienceSectionTitle && (
-              <h2 className={styles["experience-header"]}>{pageData.experienceSectionTitle}</h2>
-            )}
+          {experiences?.length && (
+            <div className={`${styles["experience-section"]} container-wide`}>
+              {pageData?.experienceSectionTitle && (
+                <h2 className={styles["experience-header"]}>{pageData.experienceSectionTitle}</h2>
+              )}
 
-            <div className={styles["experiences-list"]}>
-              {experiences?.map((experience, index) => {
-                return (<Fragment key={`project-overview-${index}`}>
-                  <ProjectShowcase {...experience} invertLayout={index % 2 === 1} />
-                </Fragment>)
-              })}
+              <div className={styles["experiences-list"]}>
+                {experiences?.map((experience, index) => {
+                  return (<Fragment key={`project-overview-${index}`}>
+                    <ProjectShowcase {...experience} invertLayout={index % 2 === 1} />
+                  </Fragment>)
+                })}
+              </div>
+
             </div>
+          )}
+        </main>
+      </div>
 
-          </div>
-        )}
-      </main>
-    </div>
+      {footerData && (<Footer {...footerData} />)}
+    </>
   );
 }
 
@@ -130,6 +144,8 @@ export async function getStaticProps() {
     parsedExperiences.push(projectShowcaseConnector(experience));
   }
 
+  // Parse the footert data from the featured person
+  const footerData = footerConnector(pageData?.featured);
 
   // By returning { props: { posts } }, the Blog component
   // will receive `posts` as a prop at build time
@@ -138,8 +154,8 @@ export async function getStaticProps() {
       pageData: pageData,
       featured: pageData?.featured ? profileBannerConnector(pageData.featured) : undefined,
       experienceSectionTitle: pageData?.experienceSectionTitle,
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       experiences: parsedExperiences,
+      footerData: footerData,
     },
   }
 }
