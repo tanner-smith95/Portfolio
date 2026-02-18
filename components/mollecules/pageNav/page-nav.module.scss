@@ -1,0 +1,24 @@
+@use "../../../styles/variables.scss";
+
+.page-nav-component {
+    background-color: variables.$background-secondary;
+    color: variables.$text-primary;
+    padding-top: variables.$vert-sm;
+    padding-bottom: variables.$vert-sm;
+    border-bottom: 2px solid variables.$accent-color;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+
+    .inner {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 2rem;
+
+        .nav-item {
+            font-size: 1rem;
+            line-height: 1.5rem;
+        }
+    }
+}

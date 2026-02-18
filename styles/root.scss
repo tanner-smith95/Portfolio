@@ -4,6 +4,7 @@
 body {
   background-color: variables.$background-primary;
   color: variables.$text-primary;
+  margin: 0;
 
   // Used to style the background of the Storybook canvas area
   .docs-story {

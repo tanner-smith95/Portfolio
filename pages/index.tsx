@@ -8,6 +8,7 @@ import projectShowcaseConnector from "@/components/blocks/projectShowcase/projec
 import { Fragment } from "react/jsx-runtime";
 import Footer, { FooterProps } from "@/components/mollecules/footer/footer";
 import footerConnector from "@/components/mollecules/footer/footerConnector";
+import PageNav from "@/components/mollecules/pageNav/pageNav";
 
 export type HomePageProps = {
   pageData: any;
@@ -22,14 +23,22 @@ export default function Home({ pageData, featured, experiences, footerData }: Ho
   return (
     <>
       <div className={styles["home-page-container"]}>
+        <PageNav />
+
         <main className="content-gutter">
           {/* <pre>{JSON.stringify(pageData.featured, null, 2)}</pre> */}
           {/* <pre>{JSON.stringify(experiences, null, 2)}</pre> */}
 
-          {featured && (<ProfileBanner {...featured} />)}
+          {featured && (
+            // TO-DO: Make nav title Editable in CMS
+            <div data-nav-title="About Me">
+              <ProfileBanner {...featured} />
+            </div>
+          )}
 
           {experiences?.length && (
-            <div className={`${styles["experience-section"]} container-wide`}>
+            // TO-DO: Make nav title Editable in CMS
+            <div data-nav-title="Experience" className={`${styles["experience-section"]} container-wide`}>
               {pageData?.experienceSectionTitle && (
                 <h2 className={styles["experience-header"]}>{pageData.experienceSectionTitle}</h2>
               )}
@@ -47,7 +56,12 @@ export default function Home({ pageData, featured, experiences, footerData }: Ho
         </main>
       </div>
 
-      {footerData && (<Footer {...footerData} />)}
+      {footerData && (
+        // TO-DO: Make nav title Editable in CMS
+        <div data-nav-title="Contact Me">
+          <Footer {...footerData} />
+        </div>
+      )}
     </>
   );
 }
