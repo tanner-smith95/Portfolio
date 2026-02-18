@@ -152,9 +152,40 @@ const PageNavMobile = () => {
             </nav>
 
             {/* Menu Modal */}
-            <Modal triggerElements={[navRef]} closeButtonAreaLabel={getMicroCopy("closeMenu")}>
-                <h2>Menu Items Here</h2>
-            </Modal>
+            <div className={styles["mobile-menu-modal"]}>
+                <Modal triggerElements={[navRef]} closeButtonAreaLabel={getMicroCopy("closeMenu")}>
+                    <div className={styles["nav-items"]}>
+                        {navItems.map((item, index) => {
+                            return (
+                                <div className={styles["nav-item"]} key={`page-nav-item-mobile-${index}`}
+                                    role="button"
+                                    tabIndex={0}
+                                    // Scroll to corresponding page element on click
+                                    onClick={() => {
+                                        (item as HTMLElement).style.scrollMarginTop =
+                                            `${(navRef?.current?.clientHeight || 0) - NAV_OFFSET}px`; // Account for nav height offset
+                                        item?.scrollIntoView({ behavior: "smooth" });
+
+                                        // Close the modal after clicking a nav item
+                                        if (navRef?.current) {
+                                            navRef.current.click();
+                                        }
+                                    }}
+                                    // Handle Enter key presses
+                                    onKeyDown={(e) => {
+                                        if (e?.key === "Enter") {
+                                            const castElt = e?.target as HTMLElement;
+                                            castElt?.click();
+                                        }
+                                    }}
+                                >
+                                    {item.getAttribute("data-nav-title")}
+                                </div>
+                            )
+                        })}
+                    </div>
+                </Modal>
+            </div>
         </>
     )
 }

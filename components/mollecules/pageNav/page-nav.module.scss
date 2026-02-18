@@ -56,3 +56,27 @@
         cursor: pointer;
     }
 }
+
+.mobile-menu-modal {
+    .nav-items {
+        min-height: 90vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .nav-item {
+        width: 100%;
+        text-align: center;
+        font-size: 1.875rem;
+        line-height: 1.25;
+        padding: variables.$vert-sm 0;
+        cursor: pointer;
+        transition: variables.$transition;
+
+        &:hover,
+        &:focus {
+            color: variables.$accent-color;
+        }
+    }
+}
