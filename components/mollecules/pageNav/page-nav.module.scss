@@ -8,7 +8,7 @@
     border-bottom: 2px solid variables.$accent-color;
     position: sticky;
     top: 0;
-    z-index: 50;
+    z-index: 5;
 
     .inner {
         display: flex;
@@ -19,6 +19,11 @@
         .nav-item {
             font-size: 1rem;
             line-height: 1.5rem;
+            cursor: pointer;
+
+            &.active {
+                color: variables.$accent-color;
+            }
         }
     }
 }
