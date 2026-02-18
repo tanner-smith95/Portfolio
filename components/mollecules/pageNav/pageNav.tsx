@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "./page-nav.module.scss";
+import Modal from "../modal/modal";
+import { getMicroCopy } from "@/utils/microsopy/microcopy";
 
 const NAV_OFFSET = 16; // Offset in pixels to trigger active state change when section overlaps with the nav
 
@@ -125,16 +127,35 @@ const PageNavMobile = () => {
             <path d="M5 7.49991L9.99994 12.4998L14.9999 7.49991" stroke="#D1D5DC" strokeWidth="1.66665" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
 
-    )
+    );
 
     return (
-        <nav ref={navRef} className={styles["page-nav-mobile-component"]}>
-            <div className={`${styles["active-item"]} container-wide content-gutter`}>
-                {navItems?.[activeIndex]?.getAttribute("data-nav-title")}
+        <>
+            <nav
+                role="button"
+                tabIndex={0}
+                ref={navRef}
+                className={styles["page-nav-mobile-component"]}
+                // Handle Enter key presses
+                onKeyDown={(e) => {
+                    if (e?.key === "Enter") {
+                        const castElt = e?.target as HTMLElement;
+                        castElt?.click();
+                    }
+                }}
+            >
+                <div className={`${styles["active-item"]} container-wide content-gutter`}>
+                    {navItems?.[activeIndex]?.getAttribute("data-nav-title")}
 
-                <ChevronDown />
-            </div>
-        </nav>
+                    <ChevronDown />
+                </div>
+            </nav>
+
+            {/* Menu Modal */}
+            <Modal triggerElements={[navRef]} closeButtonAreaLabel={getMicroCopy("closeMenu")}>
+                <h2>Menu Items Here</h2>
+            </Modal>
+        </>
     )
 }
 

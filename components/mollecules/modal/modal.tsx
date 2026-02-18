@@ -11,16 +11,22 @@ export type ModalProps = {
 export const Modal = ({ children, closeButtonAreaLabel = getMicroCopy("closeModal"), triggerElements }: ModalProps) => {
 
     const [open, setOpen] = useState(false)
+    const [triggersInitialized, setTriggersInitialized] = useState(false);
     const modalRef = useRef<HTMLDivElement>(null);
+
 
     // Add listeners ffor passed trigger elements to toggle the modal
     useEffect(() => {
-        for (const trigger of triggerElements) {
-            trigger?.current?.addEventListener("click", () => {
-                // Use data attribute that reflects the state so close triggers from outside of
-                // the component can be added in the triggerElements array
-                setOpen(!(modalRef?.current?.dataset?.open === "true"))
-            })
+        if (triggerElements?.length && !triggersInitialized) {
+            setTriggersInitialized(true);
+
+            for (const trigger of triggerElements) {
+                trigger?.current?.addEventListener("click", () => {
+                    // Use data attribute that reflects the state so close triggers from outside of
+                    // the component can be added in the triggerElements array
+                    setOpen(!(modalRef?.current?.dataset?.open === "true"))
+                })
+            }
         }
     }, [triggerElements])
 
