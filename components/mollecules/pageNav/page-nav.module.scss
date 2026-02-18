@@ -1,6 +1,7 @@
 @use "../../../styles/variables.scss";
 
-.page-nav-component {
+// DESKTOP
+.page-nav-desktop-component {
     background-color: variables.$background-secondary;
     color: variables.$text-primary;
     padding-top: variables.$vert-sm;
@@ -9,6 +10,10 @@
     position: sticky;
     top: 0;
     z-index: 5;
+
+    @media screen and (max-width: variables.$breakpoint-mobile-max) {
+        display: none;
+    }
 
     .inner {
         display: flex;
@@ -25,5 +30,29 @@
                 color: variables.$accent-color;
             }
         }
+    }
+}
+
+// MOBILE
+.page-nav-mobile-component {
+    position: relative;
+    background-color: variables.$background-secondary;
+    color: variables.$text-secondary;
+    padding-top: variables.$vert-sm;
+    padding-bottom: variables.$vert-sm;
+    border-bottom: 2px solid variables.$accent-color;
+    position: sticky;
+    top: 0;
+    z-index: 5;
+
+    @media screen and (min-width: variables.$breakpoint-mobile) {
+        display: none;
+    }
+
+    .active-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
     }
 }
