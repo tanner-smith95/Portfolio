@@ -22,8 +22,9 @@ export default function Home({ pageData, featured, experiences, footerData }: Ho
 
   return (
     <>
+      <PageNav />
+
       <div className={styles["home-page-container"]}>
-        <PageNav />
 
         <main className="content-gutter">
           {/* <pre>{JSON.stringify(pageData.featured, null, 2)}</pre> */}

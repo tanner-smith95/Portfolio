@@ -20,7 +20,7 @@ const PageNavDesktop = () => {
     }, [])
 
     useEffect(() => {
-        window.addEventListener("scroll", () => {
+        function handleScroll() {
             const navRect = navRef?.current?.getBoundingClientRect();
 
             // Always set the last nav item to active when scrolled to the bottom of the page
@@ -44,7 +44,11 @@ const PageNavDesktop = () => {
                     }
                 }
             }
-        })
+        }
+
+        handleScroll(); // Set initial active nav item on page load
+
+        window.addEventListener("scroll", handleScroll)
     }, [navItems])
 
     return navItems.length ? (
@@ -94,7 +98,7 @@ const PageNavMobile = () => {
     }, [])
 
     useEffect(() => {
-        window.addEventListener("scroll", () => {
+        function handleScroll() {
             const navRect = navRef?.current?.getBoundingClientRect();
 
             // Always set the last nav item to active when scrolled to the bottom of the page
@@ -118,7 +122,11 @@ const PageNavMobile = () => {
                     }
                 }
             }
-        })
+        }
+
+        handleScroll(); // Set initial active nav item on page load
+
+        window.addEventListener("scroll", handleScroll)
     }, [navItems])
 
     // Chevron icon for the mobile nav modal trigger
@@ -163,7 +171,7 @@ const PageNavMobile = () => {
                                     // Scroll to corresponding page element on click
                                     onClick={() => {
                                         (item as HTMLElement).style.scrollMarginTop =
-                                            `${(navRef?.current?.clientHeight || 0) - NAV_OFFSET}px`; // Account for nav height offset
+                                            `${(navRef?.current?.clientHeight || 0) + NAV_OFFSET}px`; // Account for nav height offset
                                         item?.scrollIntoView({ behavior: "smooth" });
 
                                         // Close the modal after clicking a nav item
