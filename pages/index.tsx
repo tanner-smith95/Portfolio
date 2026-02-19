@@ -41,7 +41,7 @@ export default function Home({ pageData, featured, experiences, footerData }: Ho
             // TO-DO: Make nav title Editable in CMS
             <div data-nav-title="Experience" className={`${styles["experience-section"]} container-wide`}>
               {pageData?.experienceSectionTitle && (
-                <h2 className={styles["experience-header"]}>{pageData.experienceSectionTitle}</h2>
+                <h2 className={styles["experience-header"]} data-detect-scroll-in="1.0">{pageData.experienceSectionTitle}</h2>
               )}
 
               <div className={styles["experiences-list"]}>
