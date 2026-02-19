@@ -34,3 +34,6 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+# Scroll Triggered Animations
+The `data-detect-scroll-in` data attribute indicates an animation is to be triggered when the element is scrolled in to view. It's value (e.g. 0.8) is a threashold of what percentage of the element needs to be scrolled into view to trigger the animation. The presence of the `data-detect-scroll-in` disables all animations (via a CSS rule in the `root.scss` file). When the element is scrolled into view (to the specified threshold) a scroll observer configured in the `pages/_app.tsx` file strips the `data-detect-scroll-in` re-enableing and re-triggering any animations set on that element via SCSS modules.

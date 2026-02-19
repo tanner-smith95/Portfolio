@@ -1,6 +1,12 @@
 @use "variables";
 @use "margins";
 
+// Disable animations while the data attribute indicating an element haqs not yet
+// been scrolled into view is present. This prevents unwanted animations on page load
+[data-detect-scroll-in] {
+  animation: unset !important;
+}
+
 body {
   background-color: variables.$background-primary;
   color: variables.$text-primary;

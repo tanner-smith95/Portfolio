@@ -16,9 +16,11 @@ export const ProfileBanner = ({ headshotUrl, firstName, lastName, role, tagline,
     return (
         <div className={`${styles["profile-banner"]} container-narrow`}>
             <div className={styles.header}>
-                {headshotUrl && (<div className={styles["headshot-wrapper"]}>
-                    <LazyImage src={headshotUrl} alt={fullName} />
-                </div>)}
+                {headshotUrl && (
+                    <div className={styles["headshot-wrapper"]} data-detect-scroll-in="0.8">
+                        <LazyImage src={headshotUrl} alt={fullName} />
+                    </div>
+                )}
 
                 {(firstName || lastName) && <h1 className={styles.name}>{fullName}</h1>}
 

@@ -23,6 +23,42 @@ function MyApp({ Component, pageProps }: AppProps) {
   // Component is the active page
   // pageProps is an object with the initial props for that page
 
+  // add observers to detect elements with scroll in triggers
+
+  if (typeof document !== "undefined") {
+    // Select the target elements to observe
+    const scrollinelements = document.querySelectorAll<HTMLElement>('[data-detect-scroll-in]');
+
+    // Define the callback function that runs when the intersection state changes
+    const handleIntersection = (entries: any[], observer: { unobserve: (arg0: any) => void; }) => {
+      entries.forEach(entry => {
+        // If the element is intersecting (i.e., in the viewport)
+        if (entry.isIntersecting) {
+          entry.target.removeAttribute("data-detect-scroll-in"); // Re-enable animations when the element is in view
+
+          // Stop observing the element after it enters the view once
+          observer.unobserve(entry.target);
+        }
+      });
+    };
+
+    if (scrollinelements?.length) {
+      for (const element of scrollinelements) {
+        // Create a new IntersectionObserver instance
+        const observer = new IntersectionObserver(handleIntersection, {
+          root: null, // Observes the browser viewport
+          rootMargin: '0px', // No extra margin
+          threshold: (parseFloat(element?.getAttribute('data-detect-scroll-in') || '1.0')) // Triggers when specified percentage of the element is visible (default to 100% if not set)
+        });
+
+        // Start observing the target element
+        observer.observe(element);
+      }
+    }
+  }
+
+
+
   return (
     <html lang="en">
       <Head>
