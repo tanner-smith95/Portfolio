@@ -67,6 +67,12 @@
                     background: linear-gradient(transparent, variables.$background-primary);
                 }
             }
+
+            .learn-more-button {
+                animation-delay: 0.3s !important;
+                // Button Animation
+                @include mixins.animate-fade-in;
+            }
         }
 
         .modal-content {

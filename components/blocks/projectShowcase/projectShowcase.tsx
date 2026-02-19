@@ -83,11 +83,13 @@ export const ProjectShowcase = ({
                         )}
                     </div>
 
-                    <Button
-                        ariaLabel="Learn more"
-                        ref={triggerRef}
-                        text={learnMoreText}
-                    />
+                    <div className={styles["learn-more-button"]} data-detect-scroll-in="1.0">
+                        <Button
+                            ariaLabel="Learn more"
+                            ref={triggerRef}
+                            text={learnMoreText}
+                        />
+                    </div>
                 </div>
 
                 {/* Learn More Modal */}
