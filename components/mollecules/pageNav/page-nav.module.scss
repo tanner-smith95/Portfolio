@@ -1,4 +1,5 @@
 @use "../../../styles/variables.scss";
+@use "../../../styles/mixins.scss";
 
 // DESKTOP
 .page-nav-desktop-component {
@@ -7,9 +8,14 @@
     padding-top: variables.$vert-sm;
     padding-bottom: variables.$vert-sm;
     border-bottom: 2px solid variables.$accent-color;
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
     z-index: 5;
+
+    // Nav Animation
+    @include mixins.animate-fade-in;
 
     @media screen and (max-width: variables.$breakpoint-mobile-max) {
         display: none;
@@ -41,9 +47,14 @@
     padding-top: variables.$vert-sm;
     padding-bottom: variables.$vert-sm;
     border-bottom: 2px solid variables.$accent-color;
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
     z-index: 5;
+
+    // Nav Animation
+    @include mixins.animate-fade-in;
 
     @media screen and (min-width: variables.$breakpoint-mobile) {
         display: none;
