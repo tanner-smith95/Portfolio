@@ -22,18 +22,22 @@ export const ProfileBanner = ({ headshotUrl, firstName, lastName, role, tagline,
                     </div>
                 )}
 
-                {(firstName || lastName) && <h1 className={styles.name}>{fullName}</h1>}
+                {(firstName || lastName) && <h1 className={styles.name} data-detect-scroll-in="0.8">{fullName}</h1>}
 
-                {role && (<p className={styles.role}>
-                    {role}
-                </p>)}
+                {role && (
+                    <p className={styles.role} data-detect-scroll-in="0.8">
+                        {role}
+                    </p>
+                )}
 
-                {tagline && (<p className={styles.tagline}>
-                    {tagline}
-                </p>)}
+                {tagline && (
+                    <p className={styles.tagline} data-detect-scroll-in="0.8">
+                        {tagline}
+                    </p>
+                )}
             </div>
 
-            {description && (<div className={styles.description}>
+            {description && (<div className={styles.description} data-detect-scroll-in="0.8">
                 <RichText content={description} />
             </div>)}
         </div>

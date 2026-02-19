@@ -31,20 +31,36 @@
 
         .name {
             margin-bottom: variables.$vert-sm;
+
+            // name Animation
+            @include mixins.animate-fade-in;
+
+            animation-delay: 0.3s;
         }
 
         .role,
         .tagline {
             font-size: 1.25rem;
             line-height: 1.75rem;
+
+            // Animation
+            @include mixins.animate-fade-in;
         }
 
         .role {
             margin-bottom: variables.$vert-xs;
+            animation-delay: 0.6s;
         }
 
         .tagline {
             margin-bottom: variables.$vert-mdlg;
+            animation-delay: 0.8s;
         }
+    }
+
+    .description {
+        // Description Animation
+        @include mixins.animate-fade-in;
+        animation-delay: 0.8s;
     }
 }
