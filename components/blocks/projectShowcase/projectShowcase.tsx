@@ -58,12 +58,13 @@ export const ProjectShowcase = ({
     return (
         <div className={`${styles["project-showcase-component"]} container-wide ${invertLayout ? styles.inverted : ""}`}>
             <div className={styles.inner}>
-                {imageURL && (<div className={styles["image-container"]}>
-                    <LazyImage
-                        src={imageURL}
-                        alt={imageAlt}
-                    />
-                </div>)}
+                {imageURL && (
+                    <div className={styles["image-container"]} data-detect-scroll-in="0.3">
+                        <LazyImage
+                            src={imageURL}
+                            alt={imageAlt}
+                        />
+                    </div>)}
 
                 <div className={styles["project-overview"]}>
                     {/* Project Overview truncated description */}
