@@ -3,6 +3,10 @@
 
 .profile-banner {
     padding: variables.$vert-xl 0 variables.$vert-lg 0;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
     .header {
         display: flex;

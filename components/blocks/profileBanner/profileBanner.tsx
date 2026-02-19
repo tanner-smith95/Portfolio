@@ -17,27 +17,27 @@ export const ProfileBanner = ({ headshotUrl, firstName, lastName, role, tagline,
         <div className={`${styles["profile-banner"]} container-narrow`}>
             <div className={styles.header}>
                 {headshotUrl && (
-                    <div className={styles["headshot-wrapper"]} data-detect-scroll-in="0.8">
+                    <div className={styles["headshot-wrapper"]}>
                         <LazyImage src={headshotUrl} alt={fullName} />
                     </div>
                 )}
 
-                {(firstName || lastName) && <h1 className={styles.name} data-detect-scroll-in="0.8">{fullName}</h1>}
+                {(firstName || lastName) && <h1 className={styles.name}>{fullName}</h1>}
 
                 {role && (
-                    <p className={styles.role} data-detect-scroll-in="0.8">
+                    <p className={styles.role}>
                         {role}
                     </p>
                 )}
 
                 {tagline && (
-                    <p className={styles.tagline} data-detect-scroll-in="0.8">
+                    <p className={styles.tagline}>
                         {tagline}
                     </p>
                 )}
             </div>
 
-            {description && (<div className={styles.description} data-detect-scroll-in="0.8">
+            {description && (<div className={styles.description}>
                 <RichText content={description} />
             </div>)}
         </div>

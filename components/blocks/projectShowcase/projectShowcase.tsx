@@ -68,7 +68,7 @@ export const ProjectShowcase = ({
 
                 <div className={styles["project-overview"]}>
                     {/* Project Overview truncated description */}
-                    <div className={styles.truncate} ref={truncatedRef}>
+                    <div className={styles.truncate} data-detect-scroll-in="0.1" ref={truncatedRef}>
                         {title && (<h3>{title}</h3>)}
 
                         {tools && (<PillsList
@@ -76,9 +76,11 @@ export const ProjectShowcase = ({
                             pills={tools}
                         />)}
 
-                        {description && (<RichText
-                            content={description}
-                        />)}
+                        {description && (
+                            <RichText
+                                content={description}
+                            />
+                        )}
                     </div>
 
                     <Button

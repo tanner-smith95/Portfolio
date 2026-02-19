@@ -42,6 +42,8 @@ function MyApp({ Component, pageProps }: AppProps) {
       });
     };
 
+    console.log("***********", scrollinelements);
+
     if (scrollinelements?.length) {
       for (const element of scrollinelements) {
         // Create a new IntersectionObserver instance

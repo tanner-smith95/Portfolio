@@ -53,6 +53,9 @@
                 margin-bottom: variables.$vert-sm;
                 position: relative;
 
+                // Description Animation
+                @include mixins.animate-swipe-fade-in;
+
                 &.truncated::after {
                     content: "";
                     position: absolute;
