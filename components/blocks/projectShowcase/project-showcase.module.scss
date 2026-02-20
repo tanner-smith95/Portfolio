@@ -84,10 +84,20 @@
                 overflow: hidden;
                 border-radius: 100%;
                 margin: 0 auto variables.$vert-mdlg auto;
+
+                // Modal Image Animation
+                @include mixins.animate-pop-in;
             }
 
-            .modal-content-close-button {
-                margin: 3rem 0;
+            .modal-text-content {
+                animation-delay: 0.3s !important;
+
+                // Modal Content Animation
+                @include mixins.animate-fade-in;
+
+                .modal-content-close-button {
+                    margin: 3rem 0;
+                }
             }
         }
     }

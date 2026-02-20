@@ -95,31 +95,35 @@ export const ProjectShowcase = ({
                 {/* Learn More Modal */}
                 <Modal triggerElements={[triggerRef, closeRef]}>
                     <div className={`${styles["modal-content"]} container-wide content-gutter`}>
-                        {imageURL && (<div className={styles["modal-image-container"]}>
-                            <LazyImage
-                                src={imageURL}
-                                alt={imageAlt}
+                        {imageURL && (
+                            <div className={styles["modal-image-container"]} data-detect-scroll-in="0.3">
+                                <LazyImage
+                                    src={imageURL}
+                                    alt={imageAlt}
+                                />
+                            </div>
+                        )}
+
+
+                        <div className={styles["modal-text-content"]} data-detect-scroll-in="0.1">
+                            {title && (<h3>{title}</h3>)}
+
+                            {tools && (<PillsList
+                                heading="Tools & Languages"
+                                pills={tools}
+                            />)}
+
+                            {description && (<RichText
+                                content={description}
+                            />)}
+
+                            <Button
+                                className={styles["modal-content-close-button"]}
+                                ariaLabel={getMicroCopy("close")}
+                                ref={closeRef}
+                                text={getMicroCopy("close")}
                             />
-                        </div>)}
-
-
-                        {title && (<h3>{title}</h3>)}
-
-                        {tools && (<PillsList
-                            heading="Tools & Languages"
-                            pills={tools}
-                        />)}
-
-                        {description && (<RichText
-                            content={description}
-                        />)}
-
-                        <Button
-                            className={styles["modal-content-close-button"]}
-                            ariaLabel={getMicroCopy("close")}
-                            ref={closeRef}
-                            text={getMicroCopy("close")}
-                        />
+                        </div>
                     </div>
                 </Modal>
             </div>
