@@ -18,6 +18,7 @@ export const Modal = ({ children, closeButtonAreaLabel = getMicroCopy("closeModa
     // Add listeners ffor passed trigger elements to toggle the modal
     useEffect(() => {
         if (triggerElements?.length && !triggersInitialized) {
+            // eslint-disable-next-line react-hooks/set-state-in-effect
             setTriggersInitialized(true);
 
             for (const trigger of triggerElements) {
@@ -28,7 +29,7 @@ export const Modal = ({ children, closeButtonAreaLabel = getMicroCopy("closeModa
                 })
             }
         }
-    }, [triggerElements])
+    }, [triggerElements, triggersInitialized])
 
     // Disable page level scroll while the modal is open
     useEffect(() => {

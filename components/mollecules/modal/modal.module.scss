@@ -1,4 +1,5 @@
 @use "../../../styles/variables.scss";
+@use "../../../styles/mixins.scss";
 
 .modal-component {
     display: none;
@@ -8,8 +9,13 @@
     background-color: variables.$background-secondary;
     z-index: 10;
 
+    // Modal Close Animation
+    @include mixins.animate-fade-out;
+
     &.open {
         display: block;
+        // Modal Open Animation
+        @include mixins.animate-fade-in;
     }
 
     .modal-header {
