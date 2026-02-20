@@ -1,4 +1,5 @@
 @use "../../../styles/variables.scss";
+@use "../../../styles/mixins.scss";
 
 .footer-component {
     background-color: variables.$background-secondary;
@@ -9,6 +10,9 @@
         .contact-heading {
             text-align: center;
             margin-bottom: variables.$vert-mdlg;
+
+            // Heading Animation
+            @include mixins.animate-fade-in;
         }
 
         .contacts {
@@ -29,6 +33,9 @@
                 line-height: 1.5rem;
                 display: flex;
                 align-items: center;
+
+                // Contact Link Animation
+                @include mixins.animate-fade-in;
 
                 &:hover {
                     color: variables.$accent-color;

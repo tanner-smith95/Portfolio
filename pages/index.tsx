@@ -11,6 +11,7 @@ import footerConnector from "@/components/mollecules/footer/footerConnector";
 import PageNav from "@/components/mollecules/pageNav/pageNav";
 
 export type HomePageProps = {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   pageData: any;
   featured?: ProfileBannerProps;
   experienceSectionTitle?: string;
@@ -155,6 +156,7 @@ export async function getStaticProps() {
 
   // Parse the raw experiences data
   const parsedExperiences = [];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   for (const experience of (experiences as any)?.data?.projectCollection?.items || []) {
     parsedExperiences.push(projectShowcaseConnector(experience));
   }

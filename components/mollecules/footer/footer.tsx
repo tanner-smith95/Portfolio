@@ -40,34 +40,49 @@ export const Footer = ({
     return (
         <footer className={styles["footer-component"]}>
             <div className={`${styles["inner"]} container-wide content-gutter`}>
-                {header && <h2 className={styles["contact-heading"]}>{header}</h2>}
+                {header && <h2 className={styles["contact-heading"]} data-detect-scroll-in="0.8">{header}</h2>}
 
                 <div className={styles["contacts"]}>
-                    {phoneNumber && (<a
-                        href={`tel:${phoneNumber}`}
-                        aria-label={`${getMicroCopy("call")} ${phoneNumber}`}
-                        className={styles["contact"]}>
-                        <PhoneIcon />
-                        {phoneNumber}
-                    </a>)}
+                    {phoneNumber && (
+                        <a
+                            href={`tel:${phoneNumber}`}
+                            aria-label={`${getMicroCopy("call")} ${phoneNumber}`}
+                            className={styles["contact"]}
+                            data-detect-scroll-in="0.1"
+                            style={{ animationDelay: "0.2s" }}
+                        >
+                            <PhoneIcon />
+                            {phoneNumber}
+                        </a>
+                    )}
 
-                    {emailAddress && (<a
-                        href={`mailto:${emailAddress}`}
-                        aria-label={`${getMicroCopy("email")} ${emailAddress}`}
-                        className={styles["contact"]}>
-                        <EmailIcon />
-                        {emailAddress}
-                    </a>)}
+                    {emailAddress && (
+                        <a
+                            href={`mailto:${emailAddress}`}
+                            aria-label={`${getMicroCopy("email")} ${emailAddress}`}
+                            className={styles["contact"]}
+                            data-detect-scroll-in="0.1"
+                            style={{ animationDelay: "0.4s" }}
+                        >
+                            <EmailIcon />
+                            {emailAddress}
+                        </a>
+                    )}
 
-                    {linkedInURL && (<a
-                        href={linkedInURL}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={getMicroCopy("visitLinkedIn")}
-                        className={styles["contact"]}>
-                        <LinkedInIcon />
-                        {getMicroCopy("visitLinkedIn")}
-                    </a>)}
+                    {linkedInURL && (
+                        <a
+                            href={linkedInURL}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label={getMicroCopy("visitLinkedIn")}
+                            className={styles["contact"]}
+                            data-detect-scroll-in="0.1"
+                            style={{ animationDelay: "0.6s" }}
+                        >
+                            <LinkedInIcon />
+                            {getMicroCopy("visitLinkedIn")}
+                        </a>
+                    )}
                 </div>
             </div>
         </footer>
