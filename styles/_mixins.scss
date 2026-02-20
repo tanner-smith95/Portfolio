@@ -53,3 +53,25 @@
     transform: translateY(25%);
     animation: swipeFadeIn 0.6s linear forwards;
 }
+
+@mixin animate-slide-fade-in {
+    @keyframes swipeFadeIn {
+        0% {
+            opacity: 0;
+            transform: translateX(100%);
+        }
+
+        20% {
+            transform: translateX(0);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    opacity: 0;
+    transform: translateX(100%);
+    animation: swipeFadeIn 0.6s linear forwards;
+}

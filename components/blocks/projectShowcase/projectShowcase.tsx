@@ -39,17 +39,17 @@ export const ProjectShowcase = ({
         }
     }
 
-    // Update truncated section styles on initial page loas
+    // Update truncated section styles on initial page load
     useEffect(() => {
         updateTruncation();
-    }, [truncatedRef.current]);
 
-    // Update truncated section styles on window resize
-    if (typeof window !== "undefined") {
-        window.addEventListener("resize", () => {
-            updateTruncation();
-        });
-    }
+        // Update truncated section styles on window resize
+        if (typeof window !== "undefined") {
+            window.addEventListener("resize", updateTruncation);
+        }
+    }, []);
+
+
 
     // Ref for the learn more modal trigger button
     const triggerRef = useRef<HTMLButtonElement>(null);

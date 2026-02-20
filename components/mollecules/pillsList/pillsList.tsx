@@ -8,7 +8,12 @@ export const PillsList = ({ heading, pills }: { heading?: string; pills: string[
 
             <div className={styles["pills-list"]}>
                 {pills.map((pill, index) => (
-                    <div key={`pill-${pill}-${index}`} className={styles["pill-container"]}>
+                    <div
+                        key={`pill-${pill}-${index}`}
+                        className={styles["pill-container"]}
+                        data-detect-scroll-in="0.1"
+                        style={{ animationDelay: `${0.3 + (index * 0.05)}s` }}
+                    >
                         <Pill text={pill} />
                     </div>
                 ))}
