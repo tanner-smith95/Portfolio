@@ -15,5 +15,6 @@ export const Default: Story = {
     args: {
         heading: "Test Pills List",
         pills: ["Pill 1", "Pill 2", "Pill 3"],
+        truncate: false
     },
 };

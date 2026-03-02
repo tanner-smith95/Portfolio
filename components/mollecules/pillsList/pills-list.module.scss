@@ -23,5 +23,12 @@
             // Pill Animation
             @include mixins.animate-slide-fade-in;
         }
+
+        .more-pills {
+            font-size: 0.875rem;
+            color: variables.$accent-color;
+            display: flex;
+            align-items: center;
+        }
     }
 }

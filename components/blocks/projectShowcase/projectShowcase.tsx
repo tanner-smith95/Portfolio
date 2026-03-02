@@ -72,10 +72,13 @@ export const ProjectShowcase = ({
                     <div className={styles.truncate} data-detect-scroll-in="0.1" ref={truncatedRef}>
                         {title && (<h3>{title}</h3>)}
 
-                        {tools && (<PillsList
-                            heading="Tools & Languages"
-                            pills={tools}
-                        />)}
+                        {tools && (
+                            <PillsList
+                                heading="Tools & Languages"
+                                pills={tools}
+                                truncate={true}
+                            />
+                        )}
 
                         {description && (
                             <RichText
@@ -109,10 +112,12 @@ export const ProjectShowcase = ({
                         <div className={styles["modal-text-content"]} data-detect-scroll-in="0.01">
                             {title && (<h3>{title}</h3>)}
 
-                            {tools && (<PillsList
-                                heading="Tools & Languages"
-                                pills={tools}
-                            />)}
+                            {tools && (
+                                <PillsList
+                                    heading="Tools & Languages"
+                                    pills={tools}
+                                />
+                            )}
 
                             {description && (<RichText
                                 content={description}
