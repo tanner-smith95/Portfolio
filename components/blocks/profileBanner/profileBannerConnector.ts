@@ -2,6 +2,7 @@ import richTextConnector from "@/components/atoms/richText/richTextConnector";
 import { ProfileBannerProps } from "./profileBanner";
 
 // A function to parse raw Contentful profile data to be used by the profile banner component
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function profileBannerConnector(data: any): ProfileBannerProps {
 
 

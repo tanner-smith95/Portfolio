@@ -9,6 +9,7 @@ import { Fragment } from "react/jsx-runtime";
 import Footer, { FooterProps } from "@/components/mollecules/footer/footer";
 import footerConnector from "@/components/mollecules/footer/footerConnector";
 import PageNav from "@/components/mollecules/pageNav/pageNav";
+import Head from "next/head";
 
 export type HomePageProps = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -23,6 +24,13 @@ export default function Home({ pageData, featured, experiences, footerData }: Ho
 
   return (
     <>
+      <Head>
+        {/* TO-DO: Make title and description editable in CMS */}
+        <title>Home | Tanner Smithh</title>
+        <meta name="description" content="Welcome to my portfolio website. Explore my projects, experience, and get in touch." />
+        {featured?.headshotUrl && (<meta property="og:image" content={featured.headshotUrl} />)}
+      </Head>
+
       <PageNav />
 
       <div className={styles["home-page-container"]}>

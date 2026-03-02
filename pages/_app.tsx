@@ -30,6 +30,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     const scrollinelements = document.querySelectorAll<HTMLElement>('[data-detect-scroll-in]');
 
     // Define the callback function that runs when the intersection state changes
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const handleIntersection = (entries: any[], observer: { unobserve: (arg0: any) => void; }) => {
       entries.forEach(entry => {
         // If the element is intersecting (i.e., in the viewport)
@@ -41,8 +42,6 @@ function MyApp({ Component, pageProps }: AppProps) {
         }
       });
     };
-
-    console.log("***********", scrollinelements);
 
     if (scrollinelements?.length) {
       for (const element of scrollinelements) {
@@ -67,6 +66,8 @@ function MyApp({ Component, pageProps }: AppProps) {
         {(process.env.NEXT_PUBLIC_NO_INDEX === "true" || process.env.NEXT_PUBLIC_ENVIRONMENT === "development") ? (
           <meta name="robots" content="noindex, nofollow" />
         ) : null}
+
+        <link rel="icon" type="image/x-icon" href="/tanner-outlined.ico" />
       </Head>
 
       <body
