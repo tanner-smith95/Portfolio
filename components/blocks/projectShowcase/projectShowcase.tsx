@@ -15,6 +15,7 @@ export type ProjectShowcaseProps = {
     description?: string;
     learnMoreText?: string;
     invertLayout?: boolean;
+    id?: string;
 };
 
 export const ProjectShowcase = ({

@@ -19,6 +19,7 @@ export function projectShowcaseConnector(data: any): ProjectShowcaseProps {
         tools: tools,
         description: data?.projectDescription?.json ? (richTextConnector(data.projectDescription.json)) : undefined,
         learnMoreText: getMicroCopy("learnMore"),
+        id: data?.sys?.id,
     };
 }
 

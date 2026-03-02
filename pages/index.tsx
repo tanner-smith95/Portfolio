@@ -111,7 +111,7 @@ export async function getStaticProps() {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const pageData = (rawData as any)?.data?.homePageCollection?.items?.[0];
 
-  const experienceIDs = [];
+  const experienceIDs: string[] = [];
 
   // Extract experience section project IDs to query them separately
   for (const project of pageData?.experienceCollection?.items) {
@@ -132,6 +132,9 @@ export async function getStaticProps() {
             }
           ) {
             items {
+              sys {
+                id
+              }
               featuredImage {
                 url
                 title
@@ -160,6 +163,13 @@ export async function getStaticProps() {
   for (const experience of (experiences as any)?.data?.projectCollection?.items || []) {
     parsedExperiences.push(projectShowcaseConnector(experience));
   }
+
+  // sort the parsed experiences into the order they were entered in the CMS
+  parsedExperiences.sort((a, b) => {
+    const indexA = a?.id ? experienceIDs.indexOf(a.id) : -1;
+    const indexB = b?.id ? experienceIDs.indexOf(b.id) : -1;
+    return indexA - indexB;
+  });
 
   // Parse the footert data from the featured person
   const footerData = footerConnector(pageData?.featured);
