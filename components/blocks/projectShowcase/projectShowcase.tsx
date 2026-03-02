@@ -106,7 +106,7 @@ export const ProjectShowcase = ({
                         )}
 
 
-                        <div className={styles["modal-text-content"]} data-detect-scroll-in="0.1">
+                        <div className={styles["modal-text-content"]} data-detect-scroll-in="0.01">
                             {title && (<h3>{title}</h3>)}
 
                             {tools && (<PillsList
