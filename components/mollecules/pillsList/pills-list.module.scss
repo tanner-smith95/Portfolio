@@ -29,6 +29,9 @@
             color: variables.$accent-color;
             display: flex;
             align-items: center;
+
+            // More Pills Animation
+            @include mixins.animate-slide-fade-in;
         }
     }
 }

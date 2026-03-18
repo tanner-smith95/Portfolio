@@ -22,7 +22,11 @@ export const PillsList = ({ heading, pills, truncate }: { heading?: string; pill
                 })}
 
                 {truncate && pills.length > 5 && (
-                    <div className={styles["more-pills"]}>
+                    <div
+                        className={styles["more-pills"]}
+                        data-detect-scroll-in="0.1"
+                        style={{ animationDelay: `${0.3 + (5 * 0.05)}s` }}
+                    >
                         +{pills.length - 5} {getMicroCopy("more")}
                     </div>
                 )}
